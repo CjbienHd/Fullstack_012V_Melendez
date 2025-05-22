@@ -1,6 +1,8 @@
 package cl.fullstack.demo.controller;
 
 import cl.fullstack.demo.service.ServicioBusqProducto;
+import lombok.RequiredArgsConstructor;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,21 +13,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import cl.fullstack.demo.service.InventarioService;
 import java.util.List;
 import cl.fullstack.demo.model.Producto;
-import java.util.ArrayList;
-import java.util.Optional;
+
 
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/ecomarket")
 public class Control {
 
     private final ServicioBusqProducto servicioBusqProducto;
     private final InventarioService inventarioService;
 
-    public Control(ServicioBusqProducto servicioBusqProducto, InventarioService inventarioService) {
-        this.servicioBusqProducto = servicioBusqProducto;
-        this.inventarioService = inventarioService;
-    }
 
     @GetMapping
     public String status() {
@@ -47,7 +45,7 @@ public class Control {
             @RequestParam(required = false) Integer cantidadMin,
             @RequestParam(required = false) Integer cantidadMax
     ) {
-        return servicioBusqProducto.buscarProductos(
+        return servicioBusqProducto.buscaComplejaProductos(
                 nombre, origen, material, reutilizable, vidaMin, vidaMax,
                 precioMin, precioMax, categoria, cantidadMin, cantidadMax
         );
@@ -58,24 +56,24 @@ public class Control {
     // Obtener todo el inventario
     @GetMapping("/inventario")
     public List<Producto> obtenerInventario() {
-        return inventarioService.obtenerInventarioCompleto();
+        return servicioBusqProducto.obtenerInventarioCompleto();
     }
 
     // Obtener producto por ID
     @GetMapping("/inventario/{id}")
     public Producto obtenerPorId(@PathVariable Long id) {
-        return inventarioService.obtenerPorId(id);
+        return servicioBusqProducto.obtenerPorId(id);
     }
 
     // Actualizar cantidad de un producto
     @PostMapping("/inventario/{id}/cantidad")
-    public Producto actualizarCantidad(@PathVariable Long id, @RequestParam int nuevaCantidad) {
+    public Producto actualizarCantidad(@PathVariable Long id, @RequestBody int nuevaCantidad) {
         return inventarioService.actualizarCantidad(id, nuevaCantidad);
     }
 
     // Actualizar precio de un producto
     @PostMapping("/inventario/{id}/precio")
-    public Producto actualizarPrecio(@PathVariable Long id, @RequestParam int nuevoPrecio) {
+    public Producto actualizarPrecio(@PathVariable Long id, @RequestBody int nuevoPrecio) {
         return inventarioService.actualizarPrecio(id, nuevoPrecio);
     }
 }
