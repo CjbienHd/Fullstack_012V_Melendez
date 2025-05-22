@@ -9,6 +9,16 @@
             "projectName": "demo",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-DemoApplication<mypyme>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "cl.fullstack.demo.DemoApplication",
+            "projectName": "mypyme",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
