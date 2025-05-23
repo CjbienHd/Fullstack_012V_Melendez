@@ -10,11 +10,15 @@ import org.springframework.stereotype.Service;
 public class InventarioService {
 
     private final RepositoryInventario inventarioRepo;
+    
     /** Constructor del servicio de inventario */
     public InventarioService(RepositoryInventario inventarioRepo) {
         this.inventarioRepo = inventarioRepo;
     }
 
+    public Producto creaProducto(Producto prod){
+        return inventarioRepo.save(prod);
+    }
 
 
     /** Actualiza la cantidad de un producto */

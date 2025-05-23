@@ -76,6 +76,13 @@ public class Control {
     public Producto actualizarPrecio(@PathVariable Long id, @RequestBody int nuevoPrecio) {
         return inventarioService.actualizarPrecio(id, nuevoPrecio);
     }
+
+    @PostMapping("/crearProducto")
+    public Producto crearProducto(@RequestBody Producto prod) {
+        return inventarioService.creaProducto(prod);
+    }
+    
+    
 }
 
     
