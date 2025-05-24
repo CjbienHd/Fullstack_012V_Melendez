@@ -6,7 +6,7 @@
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "mainClass": "cl.fullstack.demo.DemoApplication",
-            "projectName": "demo",
+            "projectName": "ms_inventario",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
         },
