@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import cl.fullstack.demo.model.Producto;
 import cl.fullstack.demo.repository.RepositoryProducto;
-import cl.fullstack.demo.repository.RepositoryInventario;
 import lombok.RequiredArgsConstructor;
 
 
@@ -15,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 public class ServicioBusqProducto {
 
     private final RepositoryProducto repositoryProducto;
-    private final RepositoryInventario inventarioRepo;
+
     //* Metodo que permite buscar Productos por filtros, permitiendo busquedas complejas */
     public List<Producto> buscaComplejaProductos(
             String nombre,
@@ -101,14 +100,14 @@ public class ServicioBusqProducto {
         return productos;
     }
     
-        /* Permite obtener todos los productos del inventario */
+    /* Permite obtener todos los productos del inventario */
     public List<Producto> obtenerInventarioCompleto() {
-        return inventarioRepo.findAll();
+        return repositoryProducto.findAll();
     }
 
-        /** Permite obtener un producto por su ID */
+    /** Permite obtener un producto por su ID */
     public Producto obtenerPorId(Long id) {
-        return inventarioRepo.findById(id)
+        return repositoryProducto.findById(id)
             .orElseThrow(() ->
                 new IllegalArgumentException("No se encontró producto con id: " + id)
             );

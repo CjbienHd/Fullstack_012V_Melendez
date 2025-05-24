@@ -7,10 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-import cl.fullstack.demo.service.InventarioService;
 import java.util.List;
 import cl.fullstack.demo.model.Producto;
 
@@ -22,7 +19,6 @@ import cl.fullstack.demo.model.Producto;
 public class Control {
 
     private final ServicioBusqProducto servicioBusqProducto;
-    private final InventarioService inventarioService;
 
 
     @GetMapping
@@ -65,23 +61,6 @@ public class Control {
         return servicioBusqProducto.obtenerPorId(id);
     }
 
-    // Actualizar cantidad de un producto
-    @PostMapping("/inventario/{id}/cantidad")
-    public Producto actualizarCantidad(@PathVariable Long id, @RequestBody int nuevaCantidad) {
-        return inventarioService.actualizarCantidad(id, nuevaCantidad);
-    }
-
-    // Actualizar precio de un producto
-    @PostMapping("/inventario/{id}/precio")
-    public Producto actualizarPrecio(@PathVariable Long id, @RequestBody int nuevoPrecio) {
-        return inventarioService.actualizarPrecio(id, nuevoPrecio);
-    }
-
-    @PostMapping("/crearProducto")
-    public Producto crearProducto(@RequestBody Producto prod) {
-        return inventarioService.creaProducto(prod);
-    }
-    
     
 }
 
