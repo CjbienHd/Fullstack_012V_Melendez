@@ -38,20 +38,20 @@ public class Control {
 
 
     // Actualizar cantidad de un producto
-    @PostMapping("/inventario/{id}/cantidad")
+    @PostMapping("/{id}/cantidad")
     public Producto actualizarCantidad(@PathVariable Long id, @RequestBody int nuevaCantidad) {
         return inventarioService.actualizarCantidad(id, nuevaCantidad);
     }
 
     // Actualizar precio de un producto
-    @PostMapping("/inventario/{id}/precio")
+    @PostMapping("/{id}/precio")
     public Producto actualizarPrecio(@PathVariable Long id, @RequestBody int nuevoPrecio) {
         return inventarioService.actualizarPrecio(id, nuevoPrecio);
     }
 
         
     // Actualizar nombre de un producto
-    @PostMapping("/inventario/{id}/nombre")
+    @PostMapping("/{id}/nombre")
     public Producto actualizarNombre(@PathVariable Long id, @RequestBody String nuevoNombre) {
         return inventarioService.actualizarNombre(id, nuevoNombre);
     }
@@ -59,14 +59,14 @@ public class Control {
 
         
     // Actualizar origen de un producto
-    @PostMapping("/inventario/{id}/origen")
+    @PostMapping("/{id}/origen")
     public Producto actualizarOrigen(@PathVariable Long id, @RequestBody String nuevOrigen) {
         return inventarioService.actualizarOrigen(id, nuevOrigen);
     }
 
         
     // Actualizar precio de un producto
-    @PostMapping("/inventario/{id}/material")
+    @PostMapping("/{id}/material")
     public Producto actualizarMaterial(@PathVariable Long id, @RequestBody String nuevoMaterial) {
         return inventarioService.actualizarMaterial(id, nuevoMaterial);
     }
@@ -74,7 +74,7 @@ public class Control {
 
         
     // Actualizar precio de un producto
-    @PostMapping("/inventario/{id}/reutilizacion")
+    @PostMapping("/{id}/reutilizacion")
     public Producto actualizarReutilizacion(@PathVariable Long id, @RequestBody boolean nuevaReutilizacion) {
         return inventarioService.actualizarReutilizabilidad(id, nuevaReutilizacion);
     }
@@ -82,14 +82,14 @@ public class Control {
 
         
     // Actualizar vida util de un producto
-    @PostMapping("/inventario/{id}/vidautil")
+    @PostMapping("/{id}/vidautil")
     public Producto actualizarVidaUtil(@PathVariable Long id, @RequestBody int nuevaVidaUtil) {
         return inventarioService.actualizarVidaUtill(id, nuevaVidaUtil);
     }
 
 
     // Actualizar categoria de un producto
-    @PostMapping("/inventario/{id}/categoria")
+    @PostMapping("/{id}/categoria")
     public Producto actualizarCategoria(@PathVariable Long id, @RequestBody String nuevaCategoria) {
         return inventarioService.actualizarCategoria(id, nuevaCategoria);
     }
