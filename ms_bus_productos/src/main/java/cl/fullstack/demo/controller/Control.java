@@ -23,7 +23,7 @@ public class Control {
 
     @GetMapping
     public String status() {
-        return "Programa funcionando correctamente";
+        return "microservicio busqueda de productos funcionando correctamente";
     }
 
     // --- BÚSQUEDA DE PRODUCTOS CON FILTROS ---
